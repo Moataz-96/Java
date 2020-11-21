@@ -1,0 +1,22 @@
+<prog> ::= PROGRAM <prog_name> VAR <dec_list> BEGIN <stmt_list> END.
+<prog_name> ::= id
+<dec_list> ::= <dec><dec_list_tail>
+<dec_list_tail> ::= E | ; <dec_list>
+<dec> ::= <id_list> : <type>
+<type> ::= INTEGER
+<id_list> ::= id <id_list_tail>
+<id_list_tail> ::= E | , <id_list>
+<stmt_list> ::= <stmt> <stmt_list_tail>
+<stmt_list_tail> ::= E | ; <stmt_list>
+<stmt> ::= <assign> | <read> | <write> | <for>
+<assign> ::= id := <exp>
+<exp> ::= <term><exp_tail>
+<exp_tail> ::= E | + <exp> | - <exp>
+<term> ::= <factor><term_tail>
+<term_tail> ::= E | * <term> | DIV <term> 
+<factor> ::= id | int | ( <exp> )
+<read> ::= READ ( <id_list> )
+<write> ::= WRITE ( <id_list> )
+<for> ::= FOR <index_exp> DO <body>
+<index_exp> ::= id := <exp> TO <exp>
+<body> ::= <stmt> | BEGIN <stmt_list> END

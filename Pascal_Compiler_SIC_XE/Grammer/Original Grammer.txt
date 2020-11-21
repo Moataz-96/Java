@@ -1,0 +1,25 @@
+<prog> ::= PROGRAM <prog_name> VAR <dec_list> BEGIN <stmt_list> END.
+<prog_name> ::= id
+
+<dec_list> ::= <dec> |  <dec_list> ; <dec> // Infinte Loop (ERROR)
+
+<dec> ::= <id_list> : <type>
+<type> ::= INTEGER
+
+<id_list> ::= id | <id_list> , id // Infinte Loop (ERROR)
+
+<stmt_list> ::= <stmt> | <stmt_list> ; <stmt> // Infinte Loop (ERROR)
+
+<stmt> ::= <assign> | <read> | <write> | <for>
+<assign> ::= id := <exp>
+
+<exp> ::= <term> | <exp> + <term> | <exp> - <term> // Infinte Loop (ERROR)
+
+<term> ::= <factor> | <term> * <factor> | <term> DIV <factor> // Infinte Loop (ERROR)
+
+<factor> ::= id | int | ( <exp> )
+<read> ::= READ ( <id_list> )
+<write> ::= WRITE ( <id_list> )
+<for> ::= FOR <index_exp> DO <body>
+<index_exp> ::= id := <exp> TO <exp>
+<body> ::= <stmt> | BEGIN <stmt_list> END
